@@ -62,7 +62,7 @@ public class SearchServlet extends HttpServlet {
 	            String key = (String)it.next();  
 	            if(key.toLowerCase().contains(keyword.toLowerCase())){
 	            	factor = dataList.get(key) + getInitFactor(key,keyword) + getSimilarityFactor(key,keyword);//Add the weight 
-	            	if(map.containsKey(factor)) factor += 0.1;//In case there is duplicate key value.
+	            	while(map.containsKey(factor)){factor += 0.1;}//In case there is duplicate key value.
 	            	if(map.size()<MAX_ROWS){
 	            		map.put(factor,key);
 	            	}
