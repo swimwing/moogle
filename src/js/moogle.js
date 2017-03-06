@@ -109,3 +109,39 @@ function setLocation(){
 	popDiv.style.top=top+"px";
 	document.getElementById("content_table").style.width=width+"px";
 }
+//Google Custom Search
+var myCallback = function() {
+	  if (document.readyState == 'complete') {
+	    // Document is ready when CSE element is initialized.
+	    // Render an element with both search box and search results in div with id 'keyword'.
+	    google.search.cse.element.render(
+	        {
+	          div: "keyword",
+	          tag: 'search'
+	         });
+	  } else {
+	    // Document is not ready yet, when CSE element is initialized.
+	    google.setOnLoadCallback(function() {
+	       // Render an element with both search box and search results in div with id 'keyword'.
+	        google.search.cse.element.render(
+	            {
+	              div: "keyword",
+	              tag: 'search'
+	            });
+	    }, true);
+	  }
+	};
+	
+	window.__gcse = {
+	parsetags: 'explicit',
+	callback: myCallback
+	};
+(function() {
+  var cx = '004078632594727378043:tdtdg3zhjc8';
+  var gcse = document.createElement('script');
+  gcse.type = 'text/javascript';
+  gcse.async = true;
+  gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+  var s = document.getElementsByTagName('script')[0];
+  s.parentNode.insertBefore(gcse, s);
+})();
